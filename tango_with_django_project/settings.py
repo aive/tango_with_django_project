@@ -31,6 +31,13 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 # provide an absolute path to the location <workspace>/tango_with_django_project/static/
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
+# media dir variable istructs django that media files will be uploaded to django proj. root
+# as well as ‘/media’ - or <workspace>/tango_with_django_project/media/.
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
+
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = '/media/'
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '+%*abu9gx@w3zs8#$q@j&-@k)t((h8wt+a+n&*8b3wnibpw=&5'
 
@@ -75,6 +82,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+# added this -it obtains a reference to the MEDIA_URL path when we need to
+# reference uploaded content
+                'django.template.context_processors.media',
+
             ],
         },
     },
