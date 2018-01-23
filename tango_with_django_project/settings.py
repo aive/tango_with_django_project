@@ -12,9 +12,11 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # access to the value of BASE_DIR, print stuff
+
 print(__file__)
 print(os.path.dirname(__file__))
 print(os.path.dirname(os.path.dirname(__file__)))
@@ -25,6 +27,9 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
+
+# provide an absolute path to the location <workspace>/tango_with_django_project/static/
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '+%*abu9gx@w3zs8#$q@j&-@k)t((h8wt+a+n&*8b3wnibpw=&5'
@@ -74,6 +79,9 @@ TEMPLATES = [
         },
     },
 ]
+
+# locator to store our project's static files
+STATICFILES_DIRS = [STATIC_DIR, ]
 
 WSGI_APPLICATION = 'tango_with_django_project.wsgi.application'
 
