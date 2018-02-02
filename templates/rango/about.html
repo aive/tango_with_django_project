@@ -4,7 +4,7 @@
 <html>
 
     <head>
-        <title>Rango</title>
+        <title>About Rango</title>
         <!-- CSS -->
         <link rel="stylesheet" href="{% static "css/base.css" %}" />
         <!--JavaScript -->
@@ -12,15 +12,18 @@
     </head>
 
     <body>
-        <h1>This tutorial has been put together by</h1>
-
+        <h1>This tutorial has been put together by : Aive Kalmus</h1>
+        <a href="/rango/">Home</a><br />
         <div>
-            Aive Kalmus <br />
+          <p>
+            Here is a picture of Rango <br />
             <strong>{{ boldmessage }}</strong><br />
         </div>
 
         <div>
-            <a href="/rango/about/">About Cats</a><br />
+          <img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
+          <p>
+
             <!-- Image -->
             <img src="{{ MEDIA_URL }}cat.jpg"
                  alt="Picture of cat" /> <!-- New line -->

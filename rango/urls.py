@@ -4,7 +4,7 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^about/', views.about, name='about'),
+    url(r'about/$', views.about, name='about'),
 ]
 
 # the previous command is appending a call to the static() function
@@ -19,3 +19,4 @@ urlpatterns = [
 
 # MEDIA_ROOT = MEDIA_DIR
 # MEDIA_URL = '/media/'
+
