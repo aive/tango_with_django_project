@@ -34,7 +34,7 @@ def index(request):
     context_dict = {'categories': category_list, 'pages': page_list}
 
     # Obtain our Response object early so we can add cookie information.
-    response = render(request, 'rango/index.html', context_dict)
+    #response = render(request, 'rango/index.html', context_dict)
     # Call the helper function to handle the cookies
     visitor_cookie_handler(request)
     #aive added ch 10 severside
@@ -52,7 +52,12 @@ def about(request):
     print(request.method)
     # prints out the user name, if no one is logged in it prints `AnonymousUser`
     print(request.user)
-    return render(request, 'rango/about.html', context={})
+    visitor_cookie_handler(request)
+    #aive added ch 10 severside
+    context_dict = {}
+    context_dict['visits'] = request.session['visits']
+    response = render(request, 'rango/about.html', context=context_dict)
+    return response
     #return HttpResponse("Rango says here is the about page. <br/> <a href='/rango/'>Index</a>")
     #return render(request, 'rango/about.html',{})
 
@@ -158,7 +163,7 @@ def visitor_cookie_handler(request):
     last_visit_time = datetime.strptime(last_visit_cookie[:-7],
                         '%Y-%m-%d %H:%M:%S')
     # If it's been more than a day since the last visit...
-    if (datetime.now() - last_visit_time).seconds > 0:
+    if (datetime.now() - last_visit_time).days > 0:
         visits = visits + 1
         #update the last visit cookie now that we have updated the count
         request.session['last_visit'] = str(datetime.now())
