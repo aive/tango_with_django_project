@@ -1,19 +1,13 @@
-<!DOCTYPE html>
-{%  load staticfiles %}
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
 
-<html>
+	{% block title_block %}
+		About Rango
+	{% endblock %}
 
-    <head>
-        <title>About Rango</title>
-        <!-- CSS -->
-        <link rel="stylesheet" href="{% static "css/base.css" %}" />
-        <!--JavaScript -->
-        <script src="{% static "js/jquery.js" %}"></script>
-    </head>
-
-    <body>
+	{% block body_block %}
+    <div>
         <h1>This tutorial has been put together by : Aive Kalmus</h1>
-        <a href="/rango/">Home</a><br />
         <div>
           <p>
             Here is a picture of Rango <br />
@@ -28,5 +22,6 @@
             <img src="{{ MEDIA_URL }}cat.jpg"
                  alt="Picture of cat" /> <!-- New line -->
         </div>
-    </body>
-</html>
+
+
+{% endblock %}
