@@ -91,6 +91,9 @@ TEMPLATES = [
         },
     },
 ]
+# Chapter 10
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 1209600
 
 # locator to store our project's static files
 STATICFILES_DIRS = [STATIC_DIR, ]

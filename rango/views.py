@@ -80,6 +80,13 @@ def show_category(request, category_name_slug):
     # Go render the response and return it to the client.
     return render(request, 'rango/category.html', context_dict)
 
+# A helper method
+def get_server_side_cookie(request, cookie, default_val=None):
+    val = request.session.get(cookie)
+    if not val:
+        val = default_val
+    return val
+
 # put the end bit Ch 10 Here
 def visitor_cookie_handler(request, response):
     # Get the number of visits to the site.
@@ -87,6 +94,7 @@ def visitor_cookie_handler(request, response):
     # If the cookie exists, the value returned is casted to an integer.
     # If the cookie doesn't exist, then the default value of 1 is used.
     visits = int(request.COOKIES.get('visits', '1'))
+
     last_visit_cookie = request.COOKIES.get('last_visit', str(datetime.now()))
     last_visit_time = datetime.strptime(last_visit_cookie[:-7],
     '%Y-%m-%d %H:%M:%S')
@@ -102,12 +110,7 @@ def visitor_cookie_handler(request, response):
     # Update/set the visits cookie
     response.set_cookie('visits', visits)
 
-# A helper method
-def get_server_side_cookie(request, cookie, default_val=None):
-    val = request.session.get(cookie)
-    if not val:
-        val = default_val
-    return val
+
 
 # Updated the function definition
 def visitor_cookie_handler(request):
