@@ -27,4 +27,6 @@ urlpatterns = [
     # with rango/ to be handled by
     # the rango application
     url(r'^admin/', admin.site.urls),
+    #11.1 update the urlpatterns to include a ref. to reg. package
+    url(r'^accounts/', include('registration.backends.simple.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

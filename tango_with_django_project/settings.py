@@ -45,6 +45,19 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Chapter 11.1
+# If true, users cna register
+REGISTRATION_OPEN = True
+#one-week activation window; I may, use a different value.
+ACCOUNT_ACTIVATION_DAYS = 7
+#If True, the user will be aoutomatically logged in.
+REGISTRATION_AUTO_LOGIN = True
+#The page I want user to arrive at after they successfully log in
+LOGIN_REDIRECT_URL = '/rango/'
+#The page users are directed to if they are not logged in,
+#and are trying to access pages requiring authentication
+LOGIN_URL = '/accounts/login/'
+
 
 # Application definition
 
@@ -56,7 +69,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rango',
-]
+    'registration' # add in the registration package
+    ]
 
 
 MIDDLEWARE_CLASSES = [
@@ -68,7 +82,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
+    ]
 
 
 ROOT_URLCONF = 'tango_with_django_project.urls'
@@ -95,6 +109,7 @@ TEMPLATES = [
 # Chapter 10
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_AGE = 1209600
+
 
 # locator to store our project's static files
 STATICFILES_DIRS = [STATIC_DIR, ]
